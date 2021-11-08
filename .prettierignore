@@ -1,0 +1,8 @@
+.next/
+build/
+*.html
+node_modules
+.next
+yarn.lock
+package-lock.json
+public

@@ -6,7 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "run-p -c lint:prettier lint:eslint lint:tsc",
+    "lint:prettier": "prettier --check src",
+    "lint:eslint": "eslint src --cache --ext .ts,.tsx",
+    "lint:tsc": "tsc --pretty --noEmit",
+    "fix": "run-s fix:prettier fix:eslint",
+    "fix:prettier": "prettier --write src",
+    "fix:eslint": "eslint src --cache --ext .ts,.tsx --fix",
+    "preexport": "yarn run build",
+    "export": "next export"
   },
   "dependencies": {
     "next": "12.0.3",
@@ -16,8 +24,15 @@
   "devDependencies": {
     "@types/node": "16.11.6",
     "@types/react": "17.0.34",
-    "eslint": "7",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "eslint": "^8.2.0",
     "eslint-config-next": "12.0.3",
-    "typescript": "4.4.4"
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "2.4.1",
+    "typescript": "4.4.4",
+    "yarn-run-all": "^3.1.1"
   }
 }
